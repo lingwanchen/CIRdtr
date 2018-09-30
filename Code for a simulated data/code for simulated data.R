@@ -8,8 +8,8 @@ source("wsc-twsc-functions.R")
 data<-read.csv("exampledata.csv",header=T,sep=",")
 
 ########################################################################
-## The data in this example has the same format as that in the real neuroblastoma data reported in the data analysis section of our paper. More specifically,
-## There are two initial treatments A1 and A2 with 5 covariates, such as x1 (continuous), and x2-x5(binary) at baseline.
+## The data in this example has the same format as that in the real neuroblastoma data reported in the data analysis section of our paper.
+## More specifically, there are two initial treatments A1 and A2 with 5 covariates, such as x1 (continuous), and x2-x5(binary) at baseline.
 ## Participants who had responded to the initial treatment Aj, j = 1 or 2, were further randomized to treatment B1 or B2.
 ## Participants who had not responded to the initial treatment received no further treatment, denoted as Bp.
 ## Therefore, this study design contains 4 dynamic treatment regimens : A1B1Bp, A1B2Bp, A2B1Bp and A2B2Bp.
