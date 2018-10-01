@@ -114,6 +114,48 @@ test11<-rbind(wsc.A1.1$pvalue.KS[-1],wsc.A1.1$pvalue.CvM[-1])
 row.names(test11)<-c("KS","CvM")
 test11
 
+#### For A1B2Bp
+multdata.A1.2<-data.A1$Data.all[id2.A1,]
+multdata.A1.2$Qseq<-Q2.A1[id2.A1]
+
+sc.A1.2<-comp.risk(Event(time, event)~X$x1+X$x2+X$x3+X$x4+X$x5, data=multdata.A1.2, cause=1, n.sim =100, n.times = NULL, model="prop")
+intersect.time<-sc.A1.2$cum[!is.na(sc.A1.2$cum[,2]),1] # unique time to use
+
+predx<-round(apply(data.matrix(multdata.A1.2$X),2,median))
+wsc.A1.2<-est.wSC(multdata.A1.2, predx, predt=t0, int.time=intersect.time)
+test12<-rbind(wsc.A1.2$pvalue.KS[-1],wsc.A1.2$pvalue.CvM[-1])
+row.names(test12)<-c("KS","CvM")
+test12
+
+#### For A2B1Bp
+multdata.A2.1<-data.A2$Data.all[id1.A2,]
+multdata.A2.1$Qseq<-Q1.A2[id1.A2]
+
+sc.A2.1<-comp.risk(Event(time, event)~X$x1+X$x2+X$x3+X$x4+X$x5, data=multdata.A2.1, cause=1, n.sim =100, n.times = NULL, model="prop")
+intersect.time<-sc.A2.1$cum[!is.na(sc.A2.1$cum[,2]),1] # unique time to use
+intersect.time<-intersect.time[-c(1:9)]  # taking off some smaller times to make estimation stable
+
+predx<-round(apply(data.matrix(multdata.A2.1$X),2,median))
+wsc.A2.1<-est.wSC(multdata.A2.1, predx, predt=t0, int.time=intersect.time)
+test21<-rbind(wsc.A2.1$pvalue.KS[-1],wsc.A2.1$pvalue.CvM[-1])
+row.names(test21)<-c("KS","CvM")
+test21
+
+
+#### For A2B2Bp
+multdata.A2.2<-data.A2$Data.all[id2.A2,]
+multdata.A2.2$Qseq<-Q2.A2[id2.A2]
+
+sc.A2.2<-comp.risk(Event(time, event)~X$x1+X$x2+X$x3+X$x4+X$x5, data=multdata.A2.2, cause=1, n.sim =100, n.times = NULL, model="prop")
+intersect.time<-sc.A2.2$cum[!is.na(sc.A2.2$cum[,2]),1] # unique time to use
+intersect.time<-intersect.time[-c(1:9)]  # taking off some smaller times to make estimation stable
+
+predx<-round(apply(data.matrix(multdata.A2.2$X),2,median))
+wsc.A2.2<-est.wSC(multdata.A2.2, predx, predt=t0, int.time=intersect.time)
+test22<-rbind(wsc.A2.2$pvalue.KS[-1],wsc.A2.2$pvalue.CvM[-1])
+row.names(test22)<-c("KS","CvM")
+test22
+
 ################################
 ######### WFG models ###########
 ################################
